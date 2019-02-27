@@ -1,0 +1,34 @@
+\documentclass[a4paper, titlepage]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\title{UML Dokumentation}
+\author{Damien Flury}
+\date{27. Februar 2019}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+    \section{Einführung}
+    \section{Vererbung}
+    Bei der Vererbung (engl. Inheritance) von Klassen werden Unterklassen generalisiert. Java
+    verfügt im Gegensatz zu zum Beispiel C++ nur über Single Inheritance, das heisst, dass eine Klasse
+    jeweils nur von maximal einer anderen Basisklasse erben kann. Dies führt zu einigen Limitierungen,
+    vereinfacht den Code jedoch. Somit muss in Java gegebenenfalls auf andere Beziehungen gesetzt werden,
+    wie zum Beispiel die Komposition. UML-Diagramm mit draw.io: Abbildung \ref{VererbungDrawIO}, 
+    mit UML Designer: Abbildung \ref{VererbungUmlDesigner} 
+    \begin{figure}
+        \includegraphics[width=\textwidth]{Klassendiagramm1a}
+        \caption{UML-Diagramm mit Vererbung (draw.io)}
+        \label{VererbungDrawIO}
+    \end{figure}
+    \begin{figure}
+        \includegraphics[width=\textwidth]{Klassendiagramm1b}
+        \caption{UML-Diagramm mit Vererbung (UML Designer)}
+        \label{VererbungUmlDesigner}
+    \end{figure}
+\end{document}
