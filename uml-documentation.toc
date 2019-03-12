@@ -1,6 +1,0 @@
-\babel@toc {ngerman}{}
-\contentsline {section}{\numberline {1}Einf\IeC {\"u}hrung}{3}
-\contentsline {section}{\numberline {2}Vererbung}{3}
-\contentsline {section}{\numberline {3}Assoziationen}{3}
-\contentsline {section}{\numberline {4}Use Case Diagram}{7}
-\contentsline {section}{\numberline {5}Aktivit\IeC {\"a}tsdiagramm}{7}
