@@ -4,6 +4,30 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 
 \graphicspath{{./images/}}
 
@@ -16,13 +40,38 @@
     \tableofcontents
     \newpage
     \section{Einführung}
-    \section{Vererbung}
+    \section{Klassendiagramme}
+    \subsection{Vererbung}
     Bei der Vererbung (engl. Inheritance) von Klassen werden Unterklassen generalisiert. Java
     verfügt im Gegensatz zu zum Beispiel C++ nur über Single Inheritance, das heisst, dass eine Klasse
     jeweils nur von maximal einer anderen Basisklasse erben kann. Dies führt zu einigen Limitierungen,
-    vereinfacht den Code jedoch. Somit muss in Java gegebenenfalls auf andere Beziehungen gesetzt werden,
-    wie zum Beispiel die Komposition. Für grafische Beispiele siehe Abbildung \ref{VererbungDrawIO}
-    und Abbildung \ref{VererbungUmlDesigner}
+    vereinfacht den Code jedoch. Somit muss in Java gegebenenfalls auf andere Beziehungen ausgewichen werden,
+    wie zum Beispiel die Komposition. Codebeispiel: \ref{InheritanceJava}, grafische Beispiele: Abbildung \ref{VererbungDrawIO}
+    und Abbildung \ref{VererbungUmlDesigner}.
+
+    \begin{figure}
+        \begin{lstlisting}
+    public class Person {
+        private final String firstName;
+        private final String lastName;
+        public Person(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }        
+    }
+
+    public final class Employee extends Person {
+        private final String teamName;
+        public Employee(String firstName, String lastName, string teamName) {
+            super(firstName, lastName);
+            this.teamName = teamName;
+        }
+    }
+        \end{lstlisting}
+    \caption{Vererbung in Java}
+    \label{InheritanceJava}
+    \end{figure}
+
     \begin{figure}
         \includegraphics[width=\textwidth]{Klassendiagramm1a}
         \caption{UML-Diagramm mit Vererbung (draw.io)}
@@ -34,10 +83,35 @@
         \label{VererbungUmlDesigner}
     \end{figure}
     
-    \section{Assoziationen}
-    Beim Assoziationsdiagramm geht es um Haben-/Kennenbeziehungen. 
-    Siehe Abbildung \ref{AssoziationenDrawIO} und 
-    Abbildung \ref{AssoziationenUmlDesigner}
+    \subsection{Assoziationen}
+    Assoziationen bezeichnen sowohl Besitz- als auch Kennbeziehungen.
+    Dies funktioniert im Beispiel von Java häufig anhand des Konstruktors
+    oder mithilfe von Setter-Methoden. Codebeispiel: Abbildung \ref{AggregationJava},
+    UML-Diagramme sind unter Abbildung \ref{AssoziationenDrawIO} und
+    Abbildung \ref{AssoziationenUmlDesigner} zu finden.
+
+    \begin{figure}
+    \begin{lstlisting}
+    public final class Application {
+        public static void main(String[] args) {
+            var bike = new Bike();
+
+            // Hier wird dem Driver ein Bike uebergeben:
+            var driver = new Driver(bike);
+        }
+    }
+
+    public final class Driver {
+        private final Bike bike;
+        public Driver(Bike bike) {
+            this.bike = bike
+        }        
+    }
+    \end{lstlisting}
+    \caption{Aggregation in Java}
+    \label{AggregationJava}
+    \end{figure}
+
     \begin{figure}
         \includegraphics[width=\textwidth]{Assoziationen.png}
         \caption{Klassendiagramm mit Assoziationen (draw.io)}
@@ -50,7 +124,10 @@
     \end{figure}
 
     \section{Use Case Diagram}
-    Im Use Case Diagram werden verschiedene Funktionen aufgezeichent. 
+    Das Use Case Diagram bietet die Möglichkeit, Benutzerinteraktion mit
+    der Applikation zu repräsentieren. Zum ersten Mal vorgestellt wurde
+    es an einer Konferenz in 1987 von Jacobson und findet heutzutage häufig
+    einen Platz in unterschiedlichen Softwareteams mit diversen Programmiersprachen.
     Beispiele: Abbildung \ref{UseCaseDrawIO} und Abbildung \ref{UseCaseVisio}
     \begin{figure}
         \includegraphics[width=\textwidth]{Anwendungsfalldiagramm1a.png}
@@ -64,8 +141,14 @@
     \end{figure}
 
     \section{Aktivitätsdiagramm}
-    Das Aktivitätsdiagramm zeigt eine Aktivität an. 
-    Beispiel: Abbildung \ref{AktivitaetsdiagrammDrawIO}
+    Mithilfe des Aktivitätsdiagramms kann man Abläufe, Aktionen und
+    Kontrollflüsse beschreiben.
+
+    Häufig werden durch Aktivitätsdiagramme einzelne Use Cases genauer
+    beschrieben. Das Aktivitätsdiagramm ermöglicht hier die Darstellung
+    von ein wenig komplexeren Abläufen mit Falls-Verzweigungen, Wiederholungen
+    und anderen Ausnahmen.
+    Beispiele: Abbildung \ref{AktivitaetsdiagrammDrawIO} und Abbildung \ref{AktivitaetsdiagrammUmlet}
     \begin{figure}
         \includegraphics[width=\textwidth]{Aktivitaetsdiagramm1a.png}
         \caption{Aktivitätsdiagramm (draw.io)}
